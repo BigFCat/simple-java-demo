@@ -34,7 +34,7 @@ public class DelayQueueDemo {
 
 			queue.put(new OrderDelay(list.get(i),
 
-					TimeUnit.NANOSECONDS.convert(i+2, TimeUnit.SECONDS)));
+					TimeUnit.NANOSECONDS.convert(i+3, TimeUnit.SECONDS)));
 
 		}
 
