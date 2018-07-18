@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+
+
+	<!--可以运行的配置 -->
+	<!-- <cache name="userCache" maxElementsInMemory="10000" -->
+	<!-- maxElementsOnDisk="0" eternal="true" overflowToDisk="true" -->
+	<!-- diskSpoolBufferSizeMB="20" memoryStoreEvictionPolicy="LRU" -->
+	<!-- transactionalMode="off"> -->
+	<!-- <cacheEventListenerFactory -->
+	<!-- class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" -->
+	<!-- properties="replicateAsynchronously=true, replicatePuts=true, replicateUpdates=true,replicateUpdatesViaCopy= 
+		true, replicateRemovals= true " /> -->
+	<!-- </cache> -->
+
+	<!-- <cacheManagerPeerProviderFactory -->
+	<!-- class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory" -->
+	<!-- properties="peerDiscovery=automatic, multicastGroupAddress=230.0.0.1, 
+		multicastGroupPort=4446,timeToLive=255" /> -->
+	<!-- <cacheManagerPeerListenerFactory -->
+	<!-- class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory" 
+		/> -->
+
+
+	<!--测试配置 -->
+	<cacheManagerPeerProviderFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=automatic, multicastGroupAddress=230.0.0.1,
+    multicastGroupPort=4446, timeToLive=32" />
+
+	<cacheManagerPeerListenerFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory" />
+
+	<cache name="userCache" maxElementsInMemory="10" eternal="false"
+		timeToIdleSeconds="100" timeToLiveSeconds="100" overflowToDisk="false">
+		<cacheEventListenerFactory
+			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+			properties="replicateAsynchronously=true, 
+    replicatePuts=true, 
+    replicateUpdates=true,
+        replicateUpdatesViaCopy=true, 
+    replicateRemovals=true " />
+		<bootstrapCacheLoaderFactory class="net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory" properties="bootstrapAsynchronously=false"/>
+	</cache>
+
+</ehcache>
