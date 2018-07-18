@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+	<!-- <cacheManagerPeerProviderFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=automatic, multicastGroupAddress=230.0.0.1,
+	    multicastGroupPort=4446, timeToLive=32" /> -->
+
+	<cacheManagerPeerProviderFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=automatic, multicastGroupAddress=224.1.1.1, multicastGroupPort=4446, timeToLive=32" />
+
+	<cache name="users" maxElementsInMemory="10" eternal="false"
+		timeToIdleSeconds="100" timeToLiveSeconds="100" overflowToDisk="false">
+		<cacheEventListenerFactory
+			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+			properties="replicateAsynchronously=true,replicatePuts=true,replicateUpdates=true,replicateUpdatesViaCopy=false,replicateRemovals=true" />
+	</cache>
+</ehcache>
