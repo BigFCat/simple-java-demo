@@ -10,6 +10,13 @@
 	<name>vaner</name>
 	<url>http://maven.apache.org</url>
 
+	<repositories>
+		<repository>
+			<id>aliyunmaven</id>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -60,13 +67,20 @@
 			<version>2.9.0</version>
 		</dependency>
 
-
+		<!-- https://mvnrepository.com/artifact/org.jgroups/jgroups -->
 		<dependency>
-		   <groupId>javax.websocket</groupId>
-		   <artifactId>javax.websocket-api</artifactId>
-		   <version>1.1</version>
-		   <scope>provided</scope>
+			<groupId>org.jgroups</groupId>
+			<artifactId>jgroups</artifactId>
+			<version>3.6.9.Final</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache-jgroupsreplication -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-jgroupsreplication</artifactId>
+			<version>1.7</version>
+		</dependency>
+
 
 
 	</dependencies>
