@@ -1,5 +1,6 @@
 package com.ylink.vaner;
 
+import java.net.URL;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +12,10 @@ import net.sf.ehcache.Element;
 public class Ehcache2 {
 	
 	public static void main(String[] args) {
-		CacheManager manager = new CacheManager(Ehcache2.class.getClassLoader().getResource("ehcache-jgroup2.xml"));
+		System.setProperty("java.net.preferIPv4Stack", "true");
+		System.setProperty("java.net.preferIPv6Addresses", "true");
+		URL url = Ehcache2.class.getClassLoader().getResource("ehcache/rmi-auto.xml");
+		CacheManager manager = new CacheManager(url);
 		final Cache cache = manager.getCache("userCache");
 		ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(1);
 		scheduledThreadPool.scheduleAtFixedRate(new Runnable() {

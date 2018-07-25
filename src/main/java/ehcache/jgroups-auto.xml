@@ -1,0 +1,18 @@
+<ehcache>
+    <cacheManagerPeerProviderFactory
+        class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
+        properties="connect=UDP(mcast_addr=231.12.21.132;mcast_port=45566;)"
+        propertySeparator="::" />
+    <cache name="userCache" maxElementsInMemory="10000">
+        <cacheEventListenerFactory
+            class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicatorFactory"
+            properties="replicateAsynchronously=true,
+                        replicatePuts=true,
+                        replicateUpdates=true,
+                        replicateUpdatesViaCopy=true,
+                        replicateRemovals=true" />
+        <bootstrapCacheLoaderFactory
+            class="net.sf.ehcache.distribution.jgroups.JGroupsBootstrapCacheLoaderFactory"
+            properties="bootstrapAsynchronously=true" />
+    </cache>
+</ehcache>

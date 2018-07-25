@@ -1,0 +1,20 @@
+<ehcache>
+    <cacheManagerPeerProviderFactory 
+        class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+        properties="peerDiscovery=manual,rmiUrls=//192.168.1.2:1000/userCache" />
+    <cacheManagerPeerListenerFactory 
+        class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+        properties="hostName=192.168.1.1,port=1000,socketTimeoutMillis=2000" />
+    <cache name="userCache" maxElementsInMemory="10">
+        <cacheEventListenerFactory
+            class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+            properties="replicateAsynchronously=true, 
+                        replicatePuts=true, 
+                        replicateUpdates=true,
+                        replicateUpdatesViaCopy=true, 
+                        replicateRemovals=true" />
+        <bootstrapCacheLoaderFactory
+            class="net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory"
+            properties="bootstrapAsynchronously=true" />
+    </cache>
+</ehcache>
