@@ -19,7 +19,6 @@ public class Ehcache2 {
 		final Cache cache = manager.getCache("userCache");
 		ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(1);
 		scheduledThreadPool.scheduleAtFixedRate(new Runnable() {
-			@Override
 			public void run() {
 				System.out.println("正在获取value:");
 				Element element = cache.get("key");

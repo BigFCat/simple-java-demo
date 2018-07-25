@@ -21,10 +21,8 @@ public class Ehcache1 {
 		ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(1);
 		scheduledThreadPool.scheduleAtFixedRate(new Runnable() {
 			private final AtomicLong acl = new AtomicLong(1);
-			@Override
 			public void run() {
 				long value = acl.getAndIncrement();
-				System.out.println("正在put,value值:" + value);
 				System.out.println("正在put,value值:"+value);
 				cache.put(new Element("key", value));
 			}
