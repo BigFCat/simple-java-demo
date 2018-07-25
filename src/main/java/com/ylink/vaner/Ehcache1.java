@@ -25,6 +25,7 @@ public class Ehcache1 {
 			public void run() {
 				long value = acl.getAndIncrement();
 				System.out.println("正在put,value值:" + value);
+				System.out.println("正在put,value值:"+value);
 				cache.put(new Element("key", value));
 			}
 		}, 1, 1, TimeUnit.SECONDS);
